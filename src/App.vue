@@ -1,85 +1,73 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import FileManager from '@/components/FileManager.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.png" width="125" height="125" />
+  <div class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Artificially • File Management</p>
+        <h1>Document control center</h1>
+        <p class="subtitle">
+          Connected to the Laravel API you built earlier—upload, download, or delete files in real time.
+        </p>
+      </div>
+      <img src="@/assets/logo.png" alt="Artificially logomark" width="64" height="64" />
+    </header>
 
-    <div class="wrapper">
-      <HelloWorld msg="Welcome to our coding test!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+    <main>
+      <FileManager />
+    </main>
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  min-height: 100vh;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.app-header {
+  background: #000;
+  color: #f8fafc;
+  border-radius: 1rem;
+  padding: 1.75rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25);
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+.eyebrow {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+h1 {
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.subtitle {
+  max-width: 620px;
+  color: rgba(248, 250, 252, 0.85);
 }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+main {
+  flex: 1;
 }
 
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+@media (max-width: 640px) {
+  .app-header {
+    flex-direction: column;
   }
 }
 </style>
